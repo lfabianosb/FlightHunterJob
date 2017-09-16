@@ -43,6 +43,7 @@ casper.start(target, function() {
             }
         } else {
             flight.msg = 'Voo não encontrado'
+            console.log(this.getHTML());
         }
 
         console.log(JSON.stringify(flight, null, null));
