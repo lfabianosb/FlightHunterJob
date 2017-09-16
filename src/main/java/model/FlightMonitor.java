@@ -11,8 +11,9 @@ public class FlightMonitor {
 	private int maxDays;
 	private int adult;
 	private int child;
-	private boolean nonStop = false;
+	private Integer maxStop;
 	private float alertPrice;
+	private String cia;
 	private List<Cotacao> cotacoes;
 
 	public String getFrom() {
@@ -79,12 +80,12 @@ public class FlightMonitor {
 		this.child = child;
 	}
 
-	public boolean isNonStop() {
-		return nonStop;
+	public Integer getMaxStop() {
+		return maxStop;
 	}
 
-	public void setNonStop(boolean nonStop) {
-		this.nonStop = nonStop;
+	public void setMaxStop(Integer maxStop) {
+		this.maxStop = maxStop;
 	}
 
 	public float getAlertPrice() {
@@ -93,6 +94,14 @@ public class FlightMonitor {
 
 	public void setAlertPrice(float alertPrice) {
 		this.alertPrice = alertPrice;
+	}
+
+	public String getCia() {
+		return cia;
+	}
+
+	public void setCia(String cia) {
+		this.cia = cia;
 	}
 
 	public List<Cotacao> getCotacoes() {
@@ -106,8 +115,8 @@ public class FlightMonitor {
 	@Override
 	public String toString() {
 		return "FlightMonitor [from=" + from + ", to=" + to + ", dtStart=" + dtStart + ", dtEnd=" + dtEnd + ", minDays="
-				+ minDays + ", maxDays=" + maxDays + ", adult=" + adult + ", child=" + child + ", nonStop=" + nonStop
-				+ ", alertPrice=" + alertPrice + ", cotacoes=" + cotacoes + "]";
+				+ minDays + ", maxDays=" + maxDays + ", adult=" + adult + ", child=" + child + ", maxStop=" + maxStop
+				+ ", alertPrice=" + alertPrice + ", cia=" + cia + ", cotacoes=" + cotacoes + "]";
 	}
 
 }

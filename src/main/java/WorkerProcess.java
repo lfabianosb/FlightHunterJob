@@ -132,30 +132,35 @@ public class WorkerProcess {
 
 							if (!newEnd.isAfter(end)) {
 
-								DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+								DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
 								String dtDep = newStart.format(formatter);
 								String dtRet = newEnd.format(formatter);
-								String nonStop = fm.isNonStop() ? "NS" : "-";
-								String target = BASE_TARGET + "busca/voos-resultados#/" + fm.getFrom() + "/"
-										+ fm.getTo() + "/RT/" + dtDep + "/" + dtRet + "/-/-/-/" + fm.getAdult() + "/"
-										+ fm.getChild() + "/0/" + nonStop + "/-/-/-";
+								String target = BASE_TARGET + "/flights/?hl=pt#search;f=" + fm.getFrom() + ";t="
+										+ fm.getTo() + ";d=" + dtDep + ";r=" + dtRet + ";px=" + fm.getAdult() + ","
+										+ fm.getChild();
+								if (fm.getMaxStop() != null) {
+									target += ";s=" + fm.getMaxStop();
+								}
+								if (fm.getCia() != null && !fm.getCia().equals("*")) {
+									target += ";a=" + fm.getCia();
+								}
 
-								System.out.println("target=" + target);
+								System.out.println("[" + getCurrentDateTime() + "] " + target);
 
 								String output = null;
 								try {
-									output = executeCommandWithProcessBuilder("casperjs", "viajanet.js", target);
+									output = executeCommandWithProcessBuilder("casperjs", "google.js", target);
 								} catch (Exception e) {
 									String msg = "[" + getCurrentDateTime()
-											+ "] Erro ao executar o script viajanet.js.\nTarget=" + target
+											+ "] Erro ao executar o script google.js.\nTarget=" + target
 											+ "\nMessage=" + e.getMessage();
 									new Slack().sendMessage(msg, Slack.ERROR);
 									System.err.println(msg);
 									continue;
 								}
 
-								System.out.println("output=" + output);
+								System.out.println("[" + getCurrentDateTime() + "] " + output);
 
 								Flight flight = null;
 								try {
@@ -188,7 +193,8 @@ public class WorkerProcess {
 												+ fm.getTo() + " da " + flight.getCia() + " por *" + flight.getValor()
 												+ "* no período de " + newStart.format(dtf) + " a " + newEnd.format(dtf)
 												+ " para " + fm.getAdult() + " adulto(s) e " + fm.getChild()
-												+ " criança(s)";
+												+ " criança(s)\nDuração da ida " + flight.getDuracaoIda()
+												+ " e " + flight.getEscalas();
 
 										System.out.println("[" + now + "] " + msg);
 										new Slack().sendMessage(msg, Slack.ALERT);

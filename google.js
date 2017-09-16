@@ -13,9 +13,6 @@ var flight = {};
 
 casper.start(target, function() {
     this.wait(20000, function() {
-    	console.log('\n[' + new Date().toLocaleString() + '] ----------------------------> image 1');
-    	this.capture('C:\\tmp\\google-flight1.png');
-
         var voo = this.evaluate(function() {
             return document.querySelector('.EIGTDNC-d-t div.EIGTDNC-d-Ab');
         });
@@ -39,7 +36,7 @@ casper.start(target, function() {
                     flight.escalas = escalas.textContent;
                 }
                 if (duracao) {
-                    flight.duracao = duracao.textContent;
+                    flight.duracaoIda = duracao.textContent;
                 }
             } else {
                 flight.msg = 'Companhia aérea não encontrada'
