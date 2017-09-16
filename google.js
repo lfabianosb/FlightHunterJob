@@ -12,7 +12,7 @@ var target = casper.cli.get(0);
 var flight = {};
 
 casper.start(target, function() {
-    this.wait(20000, function() {
+    this.wait(30000, function() {
         var voo = this.evaluate(function() {
             return document.querySelector('.EIGTDNC-d-t div.EIGTDNC-d-Ab');
         });
