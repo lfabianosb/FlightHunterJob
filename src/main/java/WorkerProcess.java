@@ -234,7 +234,7 @@ public class WorkerProcess {
 			System.out.println("[" + now + "] Ciclo " + counter);
 
 			if ((counter % MSG_INFO_AFTER_N_TMES) == 0) {
-				new Slack().sendMessage("[" + now + "] Travel Advisor is working!", Slack.INFO);
+				new Slack().sendMessage("[" + now + "] Flight Hunter is working!", Slack.INFO);
 			}
 
 			// Reset counter
