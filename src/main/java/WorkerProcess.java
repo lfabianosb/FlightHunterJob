@@ -145,12 +145,15 @@ public class WorkerProcess {
 								if (fm.getCia() != null && !fm.getCia().equals("*")) {
 									target += ";a=" + fm.getCia();
 								}
+								
+								//TODO remover
+								target = "https://www.decolar.com/shop/flights/results/roundtrip/JPA/BUE/2017-09-23/2017-09-30/1/C/0/NA/NA/NA/1/NA";
 
 								System.out.println("[" + getCurrentDateTime() + "] " + target);
 
 								String output = null;
 								try {
-									output = executeCommandWithProcessBuilder("casperjs", "google.js", target);
+									output = executeCommandWithProcessBuilder("casperjs", "decolar.js", target);
 								} catch (Exception e) {
 									String msg = "[" + getCurrentDateTime()
 											+ "] Erro ao executar o script google.js.\nTarget=" + target
