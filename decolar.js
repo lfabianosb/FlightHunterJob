@@ -5,7 +5,7 @@ var casper = require("casper").create({
         userAgent:   'Mozilla/5.0 (Windows NT 6.1; rv:53.0) Gecko/20100101 Firefox/53.0'
     },
     logLevel: "info",
-    verbose: true,
+    verbose: false,
     viewportSize: {
         width: 800,
         height: 600
@@ -14,7 +14,6 @@ var casper = require("casper").create({
 
 var target = casper.cli.get(0);
 var flight = {};
-var fs = require('fs');
 
 casper.start(target, function() {
     this.wait(20000, function() {
