@@ -147,13 +147,13 @@ public class WorkerProcess {
 								}
 								
 								//TODO remover
-								target = "https://www.decolar.com/shop/flights/results/roundtrip/JPA/BUE/2017-09-23/2017-09-30/1/C/0/NA/NA/NA/1/NA";
+								target = "http://www.submarinoviagens.com.br/travel/resultado-passagens.aspx?searchtype=Air&Origem=JPA&Destino=SAO&Origem=SAO&Destino=JPA&Proximity=&ProximityId=0&Data=14-10-2017&RoundTrip=1&Data=17-10-2017&SomenteDireto=false&ExecutiveFlight=false&NumADT=2&NumCHD=0&NumINF=0&Hora=&Hora=&Multi=false";
 
-								System.out.println("[" + getCurrentDateTime() + "] " + target);
+								System.out.println("\n[" + getCurrentDateTime() + "] " + target);
 
 								String output = null;
 								try {
-									output = executeCommandWithProcessBuilder("casperjs", "decolar.js", target);
+									output = executeCommandWithProcessBuilder("node", "submarino.js", target);
 								} catch (Exception e) {
 									String msg = "[" + getCurrentDateTime()
 											+ "] Erro ao executar o script google.js.\nTarget=" + target
@@ -163,7 +163,12 @@ public class WorkerProcess {
 									continue;
 								}
 
-								System.out.println("[" + getCurrentDateTime() + "] " + output);
+								System.out.println("\n[" + getCurrentDateTime() + "] " + output);
+								
+								if (output.length() > 0) {
+									System.out.println("\n\nNova consulta no site...\n\n");
+									continue;
+								}
 
 								Flight flight = null;
 								try {

@@ -1,0 +1,22 @@
+{
+  "name": "flighthunterjob",
+  "version": "1.0.0",
+  "description": "",
+  "main": "submarino.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lfabianosb/FlightHunterJob.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lfabianosb/FlightHunterJob/issues"
+  },
+  "homepage": "https://github.com/lfabianosb/FlightHunterJob#readme",
+  "dependencies": {
+    "puppeteer": "^0.11.0"
+  }
+}
