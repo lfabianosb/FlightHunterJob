@@ -26,3 +26,4 @@ hs_err_pid*
 /.env
 /Procfile.local
 /.settings/
+/node_modules/
