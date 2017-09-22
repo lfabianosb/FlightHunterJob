@@ -4,17 +4,26 @@ public class Cotacao {
 	private String cia;
 	private String dtIda;
 	private String dtVolta;
-	private Float valor;
+	private Float valorTotal;
+	private Float valorSemTaxaServico;
+	private String horaSaidaIda;
+	private String horaChegadaIda;
+	private String paradasIda;
 	private String dataHora;
 
 	public Cotacao() {
 	}
 
-	public Cotacao(String cia, String dtIda, String dtVolta, Float valor, String dataHora) {
+	public Cotacao(String cia, String dtIda, String dtVolta, Float valorTotal, Float valorSemTaxaServico,
+			String horaSaidaIda, String horaChegadaIda, String paradasIda, String dataHora) {
 		this.cia = cia;
 		this.dtIda = dtIda;
 		this.dtVolta = dtVolta;
-		this.valor = valor;
+		this.valorTotal = valorTotal;
+		this.valorSemTaxaServico = valorSemTaxaServico;
+		this.horaSaidaIda = horaSaidaIda;
+		this.horaChegadaIda = horaChegadaIda;
+		this.paradasIda = paradasIda;
 		this.dataHora = dataHora;
 	}
 
@@ -42,12 +51,44 @@ public class Cotacao {
 		this.dtVolta = dtVolta;
 	}
 
-	public Float getValor() {
-		return valor;
+	public Float getValorTotal() {
+		return valorTotal;
 	}
 
-	public void setValor(Float valor) {
-		this.valor = valor;
+	public void setValorTotal(Float valorTotal) {
+		this.valorTotal = valorTotal;
+	}
+
+	public Float getValorSemTaxaServico() {
+		return valorSemTaxaServico;
+	}
+
+	public void setValorSemTaxaServico(Float valorSemTaxaServico) {
+		this.valorSemTaxaServico = valorSemTaxaServico;
+	}
+
+	public String getHoraSaidaIda() {
+		return horaSaidaIda;
+	}
+
+	public void setHoraSaidaIda(String horaSaidaIda) {
+		this.horaSaidaIda = horaSaidaIda;
+	}
+
+	public String getHoraChegadaIda() {
+		return horaChegadaIda;
+	}
+
+	public void setHoraChegadaIda(String horaChegadaIda) {
+		this.horaChegadaIda = horaChegadaIda;
+	}
+
+	public String getParadasIda() {
+		return paradasIda;
+	}
+
+	public void setParadasIda(String paradasIda) {
+		this.paradasIda = paradasIda;
 	}
 
 	public String getDataHora() {
@@ -60,8 +101,9 @@ public class Cotacao {
 
 	@Override
 	public String toString() {
-		return "Cotacao [cia=" + cia + ", dtIda=" + dtIda + ", dtVolta=" + dtVolta + ", valor=" + valor + ", dataHora="
-				+ dataHora + "]";
+		return "Cotacao [cia=" + cia + ", dtIda=" + dtIda + ", dtVolta=" + dtVolta + ", valorTotal=" + valorTotal
+				+ ", valorSemTaxaServico=" + valorSemTaxaServico + ", horaSaidaIda=" + horaSaidaIda
+				+ ", horaChegadaIda=" + horaChegadaIda + ", paradasIda=" + paradasIda + ", dataHora=" + dataHora + "]";
 	}
 
 }

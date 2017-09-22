@@ -2,10 +2,12 @@ package model;
 
 public class Flight {
 	private String cia;
-	private float valor;
+	private float valorTotal;
+	private float valorSemTaxaServico;
 	private String msg;
-	private String duracaoIda;
-	private String escalas;
+	private String horaSaidaIda;
+	private String horaChegadaIda;
+	private String paradasIda;
 
 	public String getCia() {
 		return cia;
@@ -15,12 +17,20 @@ public class Flight {
 		this.cia = cia;
 	}
 
-	public float getValor() {
-		return valor;
+	public float getValorTotal() {
+		return valorTotal;
 	}
 
-	public void setValor(float valor) {
-		this.valor = valor;
+	public void setValorTotal(float valorTotal) {
+		this.valorTotal = valorTotal;
+	}
+
+	public float getValorSemTaxaServico() {
+		return valorSemTaxaServico;
+	}
+
+	public void setValorSemTaxaServico(float valorSemTaxaServico) {
+		this.valorSemTaxaServico = valorSemTaxaServico;
 	}
 
 	public String getMsg() {
@@ -31,26 +41,35 @@ public class Flight {
 		this.msg = msg;
 	}
 
-	public String getDuracaoIda() {
-		return duracaoIda;
+	public String getHoraSaidaIda() {
+		return horaSaidaIda;
 	}
 
-	public void setDuracaoIda(String duracaoIda) {
-		this.duracaoIda = duracaoIda;
+	public void setHoraSaidaIda(String horaSaidaIda) {
+		this.horaSaidaIda = horaSaidaIda;
 	}
 
-	public String getEscalas() {
-		return escalas;
+	public String getHoraChegadaIda() {
+		return horaChegadaIda;
 	}
 
-	public void setEscalas(String escalas) {
-		this.escalas = escalas;
+	public void setHoraChegadaIda(String horaChegadaIda) {
+		this.horaChegadaIda = horaChegadaIda;
+	}
+
+	public String getParadasIda() {
+		return paradasIda;
+	}
+
+	public void setParadasIda(String paradasIda) {
+		this.paradasIda = paradasIda;
 	}
 
 	@Override
 	public String toString() {
-		return "Flight [cia=" + cia + ", valor=" + valor + ", msg=" + msg + ", duracaoIda=" + duracaoIda + ", escalas="
-				+ escalas + "]";
+		return "Flight [cia=" + cia + ", valorTotal=" + valorTotal + ", valorSemTaxaServico=" + valorSemTaxaServico
+				+ ", msg=" + msg + ", horaSaidaIda=" + horaSaidaIda + ", horaChegadaIda=" + horaChegadaIda
+				+ ", paradasIda=" + paradasIda + "]";
 	}
 
 }
