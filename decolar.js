@@ -16,7 +16,7 @@ var target = casper.cli.get(0);
 var flight = {};
 
 casper.start(target, function() {
-    this.wait(20000, function() {
+    this.wait(30000, function() {
 
         var voo = this.evaluate(function() {
             return document.querySelector('#clusters > span:nth-child(1) > span:nth-child(1) > cluster:nth-child(1) > div:nth-child(1) > div:nth-child(2) > fare:nth-child(2) > div:nth-child(1) > span:nth-child(1) > span:nth-child(1) > div:nth-child(1) > ul:nth-child(3) > item-fare:nth-child(2) > li:nth-child(1) > span:nth-child(2) > flights-price:nth-child(1) > span:nth-child(1) > flights-price-element:nth-child(1) > span:nth-child(1) > span:nth-child(1) > em:nth-child(1) > span:nth-child(2)');
