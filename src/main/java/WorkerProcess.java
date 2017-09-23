@@ -136,15 +136,12 @@ public class WorkerProcess {
 
 								String dtDep = newStart.format(formatter);
 								String dtRet = newEnd.format(formatter);
+								String noStop = (fm.getMaxStop() != null && fm.getMaxStop() == 0) ? "true" : "false";
 								String target = BASE_TARGET + "/travel/resultado-passagens.aspx?searchtype=Air&Origem="
 										+ fm.getFrom() + "&Destino=" + fm.getTo() + "&Origem=" + fm.getTo()
 										+ "&Destino=" + fm.getFrom() + "&Data=" + dtDep + "&RoundTrip=1&Data=" + dtRet
-										+ "&SomenteDireto=false&ExecutiveFlight=false&NumADT=" + fm.getAdult()
+										+ "&SomenteDireto=" + noStop + "&ExecutiveFlight=false&NumADT=" + fm.getAdult()
 										+ "&NumCHD=" + fm.getChild() + "&NumINF=0";
-
-								// TODO remover
-								// target =
-								// "http://www.submarinoviagens.com.br/travel/resultado-passagens.aspx?searchtype=Air&Origem=JPA&Destino=SAO&Origem=SAO&Destino=JPA&Proximity=&ProximityId=0&Data=14-10-2017&RoundTrip=1&Data=17-10-2017&SomenteDireto=false&ExecutiveFlight=false&NumADT=2&NumCHD=0&NumINF=0&Hora=&Hora=&Multi=false";
 
 								System.out.println("\n[" + getCurrentDateTime() + "] " + target);
 
@@ -195,14 +192,16 @@ public class WorkerProcess {
 												+ flight.getValorSemTaxaServico() + "* no período de "
 												+ newStart.format(dtf) + " a " + newEnd.format(dtf) + " para "
 												+ fm.getAdult() + " adulto(s) e " + fm.getChild()
-												+ " criança(s)\nO voo sai às " + flight.getHoraSaidaIda()
-												+ " e chega às " + flight.getHoraChegadaIda();
+												+ " criança(s).\nO voo sai às " + flight.getHoraSaidaIda()
+												+ ", chega às " + flight.getHoraChegadaIda();
 
-										if (flight.getParadasIda().contains("direto")) {
-											msg += ". Voo direto";
+										if (flight.getParadasIda().toLowerCase().contains("direto")) {
+											msg += " e não tem parada.";
 										} else {
-											msg += " e faz " + flight.getParadasIda();
+											msg += " e faz " + flight.getParadasIda().toLowerCase() + ".";
 										}
+										msg += "\nValor com a taxa de serviço: " + flight.getValorTotal();
+
 										System.out.println("[" + now + "] " + msg);
 										new Slack().sendMessage(msg, Slack.ALERT);
 									}
